@@ -1,0 +1,14 @@
+13
+IUGC SirSyedStop 6 PatelHospital 3 Waterpump 5
+SirSyedStop ExpoCentre 3 UrduUniversity 1 RashidMinhasRoad 3 IUGC 6
+PatelHospital AllamaShabbirRoad 2 IUGC 3
+Waterpump TeenHatti 7 IUGC 5
+ExpoCentre NationalStadium 4 SirSyedStop 3
+UrduUniversity JailChawrangi 6 SirSyedStop 1
+AllamaShabbirRoad RashidMinhasRoad 7 PatelHospital 2
+TeenHatti JailChawrangi 9 Waterpump 7
+NationalStadium ShahrahFaisal 6 ExpoCentre 4
+JailChawrangi IUMainCampus 12 UrduUniversity 6 TeenHatti 9
+RashidMinhasRoad ShahrahFaisal 8 AllamaShabbirRoad 7 SirSyedStop 3
+ShahrahFaisal IUMainCampus 15 RashidMinhasRoad 8 NationalStadium 6
+IUMainCampus ShahrahFaisal 15 JailChawrangi 12 

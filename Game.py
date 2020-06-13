@@ -1,0 +1,109 @@
+
+import random
+import math
+
+def minimax(Depth, nodeIndex, isMax, scores, height):
+
+    if Depth == height:
+        return scores[nodeIndex]
+
+    if isMax:
+        return max(
+            minimax(Depth + 1, nodeIndex * 2, False, scores, height),
+            minimax(Depth + 1, nodeIndex * 2 + 1, False, scores, height),
+        )
+    return min(
+        minimax(Depth + 1, nodeIndex * 2, True, scores, height),
+        minimax(Depth + 1, nodeIndex * 2 + 1, True, scores, height),
+    )
+
+
+Source_user=0
+Source_pc=0
+Total_Game=0
+while True:
+    print('1. Rock ')
+    print('2. Paper ')
+    print('3. Scissor')
+    print("Enter choice ::")
+    # take the input from user
+    user_choice = int(input("User turn: "))
+
+   #Check option
+
+    # looping until user enter invalid input
+    while user_choice > 3 or user_choice < 1:
+        user_choice = int(input("Enter Valid Input: "))
+
+
+    if user_choice == 1:
+        choice_name = 'Rock'
+    elif user_choice == 2:
+        choice_name = 'Paper'
+    else:
+        choice_name = 'Scissor'
+
+    # print user choice
+    print("User choice is: " + choice_name)
+    print("\nNow its computer turn.......")
+
+    sys_choice = random.randint(1, 3)
+
+    while sys_choice == user_choice:
+        sys_choice = random.randint(1, 3)
+    if sys_choice == 1:
+        comp_choice_name = 'Rock'
+    elif sys_choice == 2:
+        comp_choice_name = 'paper'
+    else:
+        comp_choice_name = 'scissor'
+
+    print("System choice is: " + comp_choice_name)
+
+    print(choice_name + " V/s " + comp_choice_name)
+
+    # condition for winning
+    if ((user_choice == 1 and sys_choice == 2) or
+            (user_choice == 2 and sys_choice == 1)):
+        print("Paper wins :: ", end="")
+        result = "Paper"
+
+    elif ((user_choice == 1 and sys_choice == 3) or
+          (user_choice == 3 and sys_choice == 1)):
+        print("Rock wins ::", end="")
+        result = "Rock"
+    else:
+        print("Scissor wins ::", end="")
+        result = "Scissor"
+
+    # Printing either user or computer wins
+    Total_Game=Total_Game+1
+    if result == choice_name:
+        print(":: User wins ::")
+        Source_user = Source_user+1
+    else:
+        print(":: System wins ::")
+        Source_pc = Source_pc + 1
+
+    Choice_Op = input("Do you want to play again? (Y/N)")
+
+
+    # if user input n or N then condition is True
+    if Choice_Op == 'n' or Choice_Op == 'N':
+        break
+
+
+# Adversarial search
+
+print('Total Games Played ',Total_Game)
+print('Total Source System Wins :: ',Source_pc)
+print('Total Source User Wins :: ',Source_user)
+#least above 10 to 15 Game
+sct = [2, 4,1, 5, 3]
+sct.append(Total_Game)
+sct.append(Source_pc)
+sct.append(Source_user)
+height = math.log(len(sct), 2)
+
+#print("Optimal value : ", end="")
+print(minimax(0, 0, True, sct, height))
